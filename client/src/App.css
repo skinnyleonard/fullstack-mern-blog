@@ -1,0 +1,21 @@
+.blogList{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+}
+.blogs{
+    border: 2px dashed #bfbfbf;
+    background: #ffffff;
+    max-width: 40%;
+    overflow-wrap: break-word;
+    padding: 10px;
+}
+.blogs:hover{
+    box-shadow: 0px 0px 14px 1px rgba(0,0,0,0.31);
+    transition: 150ms;
+    cursor: pointer;
+}
+.blogs p{
+    text-align: end;
+}
