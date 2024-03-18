@@ -17,6 +17,11 @@ function Fullpost() {
     loadComments(id);
   }, [comments]);
 
+  let counter = 0
+  for (const obj of comments){
+    counter++
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await createCommentRequest(targeted, id);
@@ -37,6 +42,7 @@ function Fullpost() {
           </div>
         ))}
       <hr />
+      <h2>{counter} comentarios</h2>
       <form className="comment" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -52,7 +58,7 @@ function Fullpost() {
         />
         <button type="submit">comentar</button>
       </form>
-
+          
       <div className="comments">
         {comments.map((e) => (
           <div className="commentBox">
