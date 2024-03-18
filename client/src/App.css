@@ -19,3 +19,21 @@
 .blogs p{
     text-align: end;
 }
+.comments{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 15px;
+    margin-top: 15px;
+}
+.commentBox{
+    border: 1px dashed #cccccc;
+    background: #ffffff;
+    display: inline-block;
+    padding: 10px;
+    max-width: 30%;
+    overflow-wrap: break-word;
+}
+.commentBox p{
+    text-align: end;
+}

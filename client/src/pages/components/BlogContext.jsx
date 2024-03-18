@@ -13,13 +13,14 @@ export const useBlogs = () => {
 
 export const BlogContextProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([])
+  const [comments, setComments] = useState([])
 
   function loadBlogs(){
     fetch('http://localhost:4000/blogs')
     .then(response => response.json())
     .then(json => setBlogs(json))
   }
-
+  
   const handleDelete = async (id) => {
     try {
      const response = await deleteBlogRequest(id)
@@ -28,10 +29,15 @@ export const BlogContextProvider = ({ children }) => {
     } catch (error) {
      console.error(error)
     }
- }
+  }
+  async function loadComments (id){
+    await fetch(`http://localhost:4000/comments/${id}`)
+    .then(res => res.json())
+    .then(json => setComments(json))
+  }
 
   return (
-    <BlogContext.Provider value={{ blogs, loadBlogs, handleDelete }}>
+    <BlogContext.Provider value={{ blogs, loadBlogs, handleDelete, comments, loadComments }}>
       {children}
     </BlogContext.Provider>
   );

@@ -11,3 +11,7 @@ export const createBlogRequest = async (blog) =>{
 export const deleteBlogRequest = async (id) => {
     await axios.delete(`http://localhost:4000/blogs/${id}`)
 }
+
+export const createCommentRequest = async (comment, id) => {
+    await axios.post(`http://localhost:4000/blogs/${id}`, comment)
+}

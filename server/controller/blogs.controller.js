@@ -2,7 +2,7 @@ import {pool} from '../db.js'
 
 export const getBlogs = async (req, res) => {
     // res.send('obteniendo blogs')
-    const [result] = await pool.query('SELECT * FROM blogs ORDER BY createAt ASC')
+    const [result] = await pool.query('SELECT * FROM blogs ORDER BY createAt DESC')
     console.log(result)
     res.json(result)
 }
@@ -47,4 +47,21 @@ export const deleteBlog = async(req, res) => {
     }
 
     res.sendStatus(204)
+}
+
+export const getComment = async(req, res) => {
+    const [result] = await pool.query('SELECT * FROM comments WHERE id = ? ORDER BY createAt desc', [req.params.id])
+    res.json(result)
+}
+
+export const addComment = async(req, res) => {
+    const {name, comment} = req.body
+    const [result] = await pool.query(`INSERT INTO comments (id, name, comment) VALUES (?, ?, ?)`,[
+        req.params.id, name, comment
+    ])
+    return res.json({
+        id: result.insertId, name, comment,
+    })
+    console.log(result)
+    res.send('creando comentario')
 }
