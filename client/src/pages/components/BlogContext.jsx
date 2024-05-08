@@ -14,11 +14,18 @@ export const useBlogs = () => {
 export const BlogContextProvider = ({ children }) => {
   const [blogs, setBlogs] = useState([])
   const [comments, setComments] = useState([])
+  const [isloading, setIsloading] = useState(false)
+
+  var spinner = document.querySelector('.lds-spinner')
+  function loadSpinner(){
+    spinner.classList.remove("display")
+  }
 
   function loadBlogs(){
+    setIsloading(true)
     fetch('https://fullstack-mern-blog.onrender.com/blogs')
     .then(response => response.json())
-    .then(json => setBlogs(json))
+    .then(json => {setBlogs(json); setIsloading(false)})
   }
   
   const handleDelete = async (id) => {
@@ -31,13 +38,14 @@ export const BlogContextProvider = ({ children }) => {
     }
   }
   async function loadComments (id){
+    setIsloading(true)
     await fetch(`https://fullstack-mern-blog.onrender.com/comments/${id}`)
     .then(res => res.json())
-    .then(json => setComments(json))
+    .then(json => {setComments(json); setIsloading(false)})
   }
 
   return (
-    <BlogContext.Provider value={{ blogs, loadBlogs, handleDelete, comments, loadComments }}>
+    <BlogContext.Provider value={{ blogs, loadBlogs, handleDelete, comments, loadComments, isloading }}>
       {children}
     </BlogContext.Provider>
   );
