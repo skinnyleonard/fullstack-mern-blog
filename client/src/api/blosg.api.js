@@ -1,17 +1,17 @@
 import axios from 'axios'
 
 export const getBlogsRequest = async () =>{
-    await axios.get('http://localhost:4000/blogs',)
+    await axios.get('https://fullstack-mern-blog.onrender.com/blogs',)
 }
 
 export const createBlogRequest = async (blog) =>{
-    await axios.post('http://localhost:4000/blogs', blog)
+    await axios.post('https://fullstack-mern-blog.onrender.com/blogs', blog)
 }
 
 export const deleteBlogRequest = async (id) => {
-    await axios.delete(`http://localhost:4000/blogs/${id}`)
+    await axios.delete(`https://fullstack-mern-blog.onrender.com/blogs/${id}`)
 }
 
 export const createCommentRequest = async (comment, id) => {
-    await axios.post(`http://localhost:4000/blogs/${id}`, comment)
+    await axios.post(`https://fullstack-mern-blog.onrender.com/blogs/${id}`, comment)
 }
