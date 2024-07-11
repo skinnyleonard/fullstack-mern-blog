@@ -6,8 +6,8 @@ import blogRoutes from './routes/blogs.routes.js'
 
 const app = express()
 
-app.use(cors())
 app.use(express.json())
+app.use(cors({origin: true}))
 
 app.use(indexRoutes)
 app.use(blogRoutes)
