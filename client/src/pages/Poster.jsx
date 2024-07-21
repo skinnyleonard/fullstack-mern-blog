@@ -13,7 +13,6 @@ function Poster() {
     console.log(targeted)
     try {
       const response = await createBlogRequest(targeted)
-      response.status = 200;
       console.log(response)
     } catch (error) {
       console.error(error)
