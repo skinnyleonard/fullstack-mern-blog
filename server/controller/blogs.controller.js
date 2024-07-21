@@ -27,8 +27,8 @@ export const createBlog = async(req, res) => {
     return res.json({
         id: result.insertId, name, post,
     })
-    // console.log(result)
-    // res.send('creando blogs')
+    console.log(result)
+    res.send('creando blogs')
 }
 
 export const updateBlog = async(req, res) => {
