@@ -10,7 +10,7 @@ app.use(express.json())
 const corsOptions = {
     origin: 'https://crotoblog.netlify.app',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true // If you need to send cookies or authentication headers
+    credentials: true
 };
 app.use(cors(corsOptions));
 
