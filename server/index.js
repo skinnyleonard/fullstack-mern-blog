@@ -1,7 +1,7 @@
 import express from 'express'
 import cors from 'cors'
 import {PORT} from './config.js'
-import indexRoutes from './routes/index.routes.js'
+// import indexRoutes from './routes/index.routes.js'
 import blogRoutes from './routes/blogs.routes.js'
 
 const app = express()
