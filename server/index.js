@@ -7,11 +7,7 @@ import blogRoutes from './routes/blogs.routes.js'
 const app = express()
 
 app.use(express.json())
-const corsOption = {
-    credentials: true,
-    origin: ['http://localhost:5173', 'crotoblog.netlify.app']
-}
-app.use(cors(corsOption))
+app.use(cors({origin: true}))
 
 app.use(indexRoutes)
 app.use(blogRoutes)
