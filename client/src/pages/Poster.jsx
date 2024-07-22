@@ -20,7 +20,7 @@ function Poster() {
     console.log(Array.from(formdata)); 
     if(file == undefined){
       console.log('no hay imagenes')
-    }else {axios.post('http://localhost:4000/images', formdata)}
+    }else {axios.post('https://fullstack-mern-blog.onrender.com/images', formdata)}
     console.log(targeted)
     try {
       const response = await createBlogRequest(targeted)
