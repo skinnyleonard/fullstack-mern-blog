@@ -1,4 +1,7 @@
 import {pool} from '../db.js'
+import cloudinary from 'cloudinary'
+import multer from 'multer'
+import path from 'path'
 
 export const getBlogs = async (req, res) => {
     // res.send('obteniendo blogs')
@@ -19,7 +22,7 @@ export const getBlog = async (req, res) => {
     res.json(result[0])
 }
 
-export const createBlog = async(req, res) => {
+export const createBlog = async (req, res) => {
     const {name, post} = req.body
     const [result] = await pool.query('INSERT INTO blogs (name, post) VALUES (?, ?)',[
         name, post
@@ -29,6 +32,13 @@ export const createBlog = async(req, res) => {
     })
     console.log(result)
     res.send('creando blogs')
+}
+
+export const receiveImage = async (req, res) => {
+    const resultUrl = await cloudinary.v2.uploader.upload(req.file.path)
+    pool.query('update blogs set image = (?) order by id desc limit 1',[
+        resultUrl.url
+    ])
 }
 
 export const updateBlog = async(req, res) => {

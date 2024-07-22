@@ -10,6 +10,7 @@ function Blogcard({ e }) {
   return (
     <>
       <div className="blogs" onClick={() => window.location.href = `/post/${e.id}`}>
+        <img src={e.image}/>
         <h1>{e.post}</h1>
         <h2>{e.name}</h2>
         <p><small>{e.createAt}</small></p>

@@ -36,6 +36,7 @@ function Fullpost() {
         .filter((e) => e.id == id)
         .map((e) => (
           <div className="blogs">
+            <img src={e.image}/>
             <h1>{e.post}</h1>
             <h2>{e.name}</h2>
             <p><small>{e.createAt}</small></p>

@@ -19,6 +19,9 @@
 .blogs p{
     text-align: end;
 }
+.blogs img{
+  max-width: 100%;
+}
 .comments{
     width: 100%;
     display: grid;
