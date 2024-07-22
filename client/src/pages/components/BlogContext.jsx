@@ -23,7 +23,7 @@ export const BlogContextProvider = ({ children }) => {
 
   function loadBlogs(){
     setIsloading(true)
-    fetch('http://localhost:4000/blogs')
+    fetch('https://fullstack-mern-blog.onrender.com/blogs')
     .then(response => response.json())
     .then(json => {setBlogs(json); setIsloading(false)})
   }
@@ -39,7 +39,7 @@ export const BlogContextProvider = ({ children }) => {
   }
   async function loadComments (id){
     setIsloading(true)
-    await fetch(`http://localhost:4000/comments/${id}`)
+    await fetch(`https://fullstack-mern-blog.onrender.com/comments/${id}`)
     .then(res => res.json())
     .then(json => {setComments(json); setIsloading(false)})
   }
