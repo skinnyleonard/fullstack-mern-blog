@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createBlogRequest } from "../api/blosg.api";
 import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
 
 function Poster() {
@@ -60,7 +62,7 @@ function Poster() {
           onChange={handleFile}
         />
         <br />
-        <button type="submit">Publicar</button>
+        <button type="submit">Publicar <FontAwesomeIcon icon={faThumbsUp} /></button>
       </form>
     </>
   );

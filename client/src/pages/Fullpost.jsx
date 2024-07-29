@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useBlogs } from "./components/BlogContext";
 import { createCommentRequest } from "../api/blosg.api";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserTie } from '@fortawesome/free-solid-svg-icons' 
 
 function Fullpost() {
   const { id } = useParams();
@@ -63,6 +65,7 @@ function Fullpost() {
       <div className="comments">
         {comments.map((e) => (
           <div className="commentBox">
+            <FontAwesomeIcon icon={faUserTie} className="faUserTie"/>
             <h2>{e.name} <small>comento:</small></h2>
             <h3>{e.comment}</h3>
             <p><small>{e.createAt}</small></p>
