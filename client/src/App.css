@@ -1,6 +1,6 @@
 *{
   color: white;
-  font-family: system-ui;
+  font-family: monospace;
 }
 @font-face {
   font-family: hemihead;
@@ -15,7 +15,7 @@ body{
   background-attachment: fixed;
 }
 #root{
-  margin: 0 100px 30px 100px;
+  margin: 0 100px 50px 100px;
   padding: 0 10px 0 10px;
   background-color: #0000009e;
 }
@@ -31,9 +31,9 @@ header h1:hover{
   text-shadow: 0px 0px 36px rgba(255,255,255,1);
 }
 header ul{
-  position: absolute;
-  right: 15%;
-  list-style: none;
+    list-style: none;
+    display: inline-block;
+    float: inline-end;
 }
 header a{
   text-decoration: none;
@@ -42,6 +42,7 @@ header a{
   border: 1px solid #00d3ff;
   float: right;
   margin: 5px;
+  font-family: 'hemihead';
 }
 header img{
   max-width: 100px;
@@ -52,7 +53,6 @@ header img{
 }
 header a:hover{
   transition: 400ms ease-in-out;
-  transform: scaleX(1.7);
   box-shadow: 0px 0px 30px -4px rgba(0,211,255,1);
 }
 button{
@@ -67,6 +67,11 @@ button{
 button:hover{
   transition: 200ms ease-in-out;
   box-shadow: 0px 0px 20px -4px rgb(255, 255, 255);
+}
+button:disabled{
+  cursor: auto;
+  box-shadow: 0px 0px 0 -0 rgb(0, 0, 0);
+  color: rgb(168, 168, 168);
 }
 input[type=file]::file-selector-button{
   color: white;
@@ -84,6 +89,7 @@ input[type=text]{
   padding: 5px;
   color: white;
   background: rgba(0, 0, 0, 0.048);
+  width: 604px;
 }
 textarea{
   border: 1px solid rgb(27, 27, 27);
@@ -93,9 +99,14 @@ textarea{
 }
 .blogList {
   width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 15px
+    /* display: grid
+; */
+    /* grid-template-columns: 1fr; */
+    /* row-gap: 15px; */
+    display: flex
+;
+    flex-direction: column;
+    gap: 15px;
 }
 
 .blogs {
@@ -103,7 +114,13 @@ textarea{
   background: #01ff561c;
   max-width: 40%;
   overflow-wrap: break-word;
-  padding: 10px
+  padding: 10px;
+  font-size: 12px;
+}
+
+.blogs h2{
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .blogs:hover {
@@ -113,19 +130,30 @@ textarea{
 }
 
 .blogs p {
-  text-align: end
+  text-align: end;
+  font-style: italic;
 }
 
 .blogs img {
   max-width: 100%
 }
-
+.comment{
+  display: inline-flex;
+  float: inline-end;
+  flex-direction: column;
+  align-items: center;
+}
 .comments {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  row-gap: 15px;
-  margin-top: 15px
+  display: inline-flex;
+  width: max-content;
+  gap: 15px;
+  height: 100%;
+  margin-top: 0;
+  flex-direction: column;
+  float: inline-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  margin-bottom: 50px;
 }
 
 .commentBox {
@@ -133,7 +161,7 @@ textarea{
   background: #0000;
   display: inline-block;
   padding: 10px;
-  max-width: 30%;
+  width: 300px;
   overflow-wrap: break-word
 }
 .commentBox h2{
@@ -144,6 +172,14 @@ textarea{
   font-size: 25px;
   vertical-align: middle;
   border: 1px solid white;
+  padding: 10px;
+  border-radius: 50%;
+}
+.faUser{
+  /* margin-right: 10px; */
+  font-size: 30px;
+  vertical-align: middle;
+  /* border: 1px solid white; */
   padding: 10px;
   border-radius: 50%;
 }
@@ -183,6 +219,11 @@ textarea{
   height: 17.6px;
   border-radius: 20%;
   background: currentColor
+}
+
+.posteaTitle{
+  display: inline-block;
+  vertical-align: middle;
 }
 
 .lds-spinner div:nth-child(1) {

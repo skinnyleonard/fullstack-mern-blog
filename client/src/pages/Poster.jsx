@@ -3,6 +3,7 @@ import { createBlogRequest } from "../api/blosg.api";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsUp } from '@fortawesome/free-solid-svg-icons'
+import { faUserPen } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 
 function Poster() {
@@ -19,6 +20,7 @@ function Poster() {
   
   const handleSubmit = async (e) => {
     e.preventDefault();
+    document.querySelector("button").disabled = true;
     console.log(Array.from(formdata)); 
     if(file == undefined){
       console.log('no hay imagenes')
@@ -36,9 +38,19 @@ function Poster() {
   formdata.append('image', file)
   const targeted = {name: newUser, post: newPost}
 
+  useEffect(() => {
+    if(newUser.length == 0 && newPost.length == 0){
+      document.querySelector("button").disabled = true;
+    }
+    else{
+      document.querySelector("button").disabled = false;
+    }
+  })
+
   return (
     <>
-    <h1>{params.id ? "edita el post" : "Postea algo "}</h1>
+    <FontAwesomeIcon icon={faUserPen} className="faUser" />
+    <h1 className="posteaTitle">{params.id ? "edita el post" : "Postea algo "}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -46,15 +58,17 @@ function Poster() {
           placeholder="escribi tu nombre..."
           onChange={(e) => setNewUser(e.target.value)}
           value={newUser}
+          required
         />
         <br />
         <textarea
           name="post"
-          cols="30"
+          cols="100"
           rows="10"
           placeholder="escribi algo dale..."
           onChange={(e) => setNewPost(e.target.value)}
           value={newPost}
+          required
         ></textarea>
         <br />
         <h3>Subi una foto...</h3>
