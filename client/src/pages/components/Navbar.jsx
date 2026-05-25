@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouse, faShareFromSquare } from '@fortawesome/free-solid-svg-icons'
-import image from '../../windows-live-messenger-2012.webp'
+import { faHouse, faShareFromSquare, faPen } from '@fortawesome/free-solid-svg-icons'
+// import image from '../../windows-live-messenger-2012.webp'
+import image from '../../fotito.png'
 
 function Navbar() {
   var i = 0;
@@ -26,7 +27,7 @@ function Navbar() {
             <ul>
                 <li><h2><a href="/">Casita <FontAwesomeIcon icon={faHouse} /></a></h2></li>
                 <li><h2><Link to={'/new'}>
-                Postea algo <FontAwesomeIcon icon={faShareFromSquare} /></Link></h2></li>
+                Postea algo <FontAwesomeIcon icon={faPen} /></Link></h2></li>
             </ul>
         </header>
     </>

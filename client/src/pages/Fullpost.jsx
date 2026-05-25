@@ -26,6 +26,7 @@ function Fullpost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    document.querySelector(".comment").style.display = none;
     await createCommentRequest(targeted, id);
     setName("");
     setComment("");
@@ -45,6 +46,9 @@ function Fullpost() {
           </div>
         ))}
       <hr />
+      <button className="commentBtn" onClick={() => 
+        document.querySelector(".comment").style.display = "block"
+      }>comenta algo</button>
       <h2>{counter} comentarios</h2>
       <form className="comment" onSubmit={handleSubmit}>
         <input
@@ -53,7 +57,7 @@ function Fullpost() {
           onChange={(e) => setName(e.target.value)}
           value={name}
         />
-        <input
+        <textarea
           type="text"
           placeholder="comenta..."
           onChange={(e) => setComment(e.target.value)}

@@ -21,13 +21,18 @@ const defaultOptions = {
 function Blogcard({ e }) {
 
   const {handleDelete} = useBlogs()
-  const colors = ["#018aff", "#ff7c01", "#01ff56"]
+  const colors = ["#64b3f6", "#ffa24b", "#2aff71"]
+  // const colors = ["#018aff", "#ff7c01", "#01ff56"]
   var rand = colors[Math.floor(colors.length * Math.random())]
 
   return (
     <>
     <Tilt options={defaultOptions} className="blogs" 
-    style={{border: `3px dashed ${rand}`, background: `${rand + "1c"}`}}>
+    style={{
+      border: `2px dashed ${rand}`, 
+      background: `${rand + "1c"}`, 
+      boxShadow: `inset 0px 0px 14px 5px ${rand+"1f"}, 0px 0px 14px 5px ${rand+"41"}`
+      }}>
       <div onClick={() => window.location.href = `/post/${e.id}`}>
         <img src={e.image}/>
         <h1>{e.post}</h1>
