@@ -29,7 +29,7 @@ function Fullpost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    mql.matches ? document.querySelector(".comment").style.display = "none" : document.querySelector(".comment").style.display = "block";
+    mql.matches ? document.querySelector(".comment").style.display = "none" : document.querySelector(".comment").style.display = "inline-flex";
     await createCommentRequest(targeted, id);
     setName("");
     setComment("");
