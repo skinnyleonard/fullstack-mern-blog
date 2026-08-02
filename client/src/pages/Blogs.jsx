@@ -17,8 +17,9 @@ function Blogs() {
 
   return (
     <>
-        <h1>Blogs publicados</h1>
+        <h1>Blogs publicados {isloading ? <small>(puede tardar, API alojada en un plan gratuito)</small> : null}</h1>
         {isloading ? <div class="lds-spinner">
+          {/* <div></div>
           <div></div>
           <div></div>
           <div></div>
@@ -29,8 +30,14 @@ function Blogs() {
           <div></div>
           <div></div>
           <div></div>
-          <div></div>
-          <div></div>
+          <div></div> */}
+          {Array.from({length:10}).map((v, i) => (
+            <div className="skull">
+              <div className="imageExample"></div>
+              <div className="titleExample"></div>
+              <div className="userExample"></div>
+            </div>
+          ))}
         </div> : null}
         <div className="blogList">
           {renderMain()}

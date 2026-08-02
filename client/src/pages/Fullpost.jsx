@@ -12,6 +12,9 @@ function Fullpost() {
   const [comment, setComment] = useState("");
 
   const { blogs, loadBlogs, comments, loadComments } = useBlogs();
+
+  var mql = window.matchMedia("(max-aspect-ratio: 9/16)")
+
   useEffect(() => {
     loadBlogs();
   }, []);
@@ -26,7 +29,7 @@ function Fullpost() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    document.querySelector(".comment").style.display = none;
+    mql.matches ? document.querySelector(".comment").style.display = "none" : document.querySelector(".comment").style.display = "block";
     await createCommentRequest(targeted, id);
     setName("");
     setComment("");
@@ -38,18 +41,17 @@ function Fullpost() {
       {blogs
         .filter((e) => e.id == id)
         .map((e) => (
-          <div className="blogs">
+          <div className="blogList">
+            <div className="blogs">
             <img src={e.image}/>
             <h1>{e.post}</h1>
             <h2>{e.name}</h2>
             <p><small>{e.createAt}</small></p>
           </div>
+          </div>
         ))}
       <hr />
-      <button className="commentBtn" onClick={() => 
-        document.querySelector(".comment").style.display = "block"
-      }>comenta algo</button>
-      <h2>{counter} comentarios</h2>
+
       <form className="comment" onSubmit={handleSubmit}>
         <input
           type="text"
@@ -65,7 +67,11 @@ function Fullpost() {
         />
         <button type="submit">comentar</button>
       </form>
-          
+
+      <h2>{counter} comentarios</h2>
+      <button className="commentBtn" onClick={() => 
+        document.querySelector(".comment").style.display = "block"
+      }>comenta algo</button>
       <div className="comments">
         {comments.map((e) => (
           <div className="commentBox">

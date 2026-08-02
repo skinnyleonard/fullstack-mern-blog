@@ -40,7 +40,7 @@ function Poster() {
   const targeted = {name: newUser, post: newPost}
 
   useEffect(() => {
-    if(newUser.length == 0 && newPost.length == 0){
+    if(newUser.trim().length == 0 || newPost.trim().length == 0){
       document.querySelector("button").disabled = true;
     }
     else{
